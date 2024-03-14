@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="#" th:action="@{/menu}" method="post" th:object="${menu}">
+        <p>Nombre: <label>
+            <input type="text" th:field="*{nombre}" />
+        </label></p>
+        <p>Precio: <label>
+            <input type="text" th:field="*{precio}" />
+        </label></p>
+        <p>Descripcion: <label>
+            <input type="text" th:field="*{descripcion}" />
+        </label></p>
+        <p>Imagen: <label>
+            <input type="text" th:field="*{imagen}" />
+        </label></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>

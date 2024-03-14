@@ -15,7 +15,7 @@ public class AlmacenService implements IAlmacenService{
     private AlmacenRepository almacenRepository;
 
     @Override
-    public Long createAlmacen(String nombre) {
+    public Long crearAlmacen(String nombre) {
         List<Producto> productos = new ArrayList<>();
         Almacen almacen = new Almacen(nombre, productos);
 
@@ -25,11 +25,23 @@ public class AlmacenService implements IAlmacenService{
     }
 
     @Override
-    public void addProducto(String nombre, String descripcion, Double precio, int idAlmacen) {
-        
+    public Almacen cogerAlmacen(Long idAlmacen) {
+        Almacen almacen = almacenRepository.findById(idAlmacen).orElse(null);
+        return almacen;
     }
 
-    public Long createAlmacenSin() {
+    @Override
+    public void añadirProducto(Producto producto, Almacen almacen) {
+        List<Producto> productos = new ArrayList<>();
+        if(producto.getAlmacenes() != null){
+            productos = almacen.getProductos();
+        }
+        productos.add(producto);
+        almacen.setProductos(productos);
+        almacenRepository.save(almacen);
+    }
+
+    public Long crearAlmacenSin() {
         List<Producto> productos = new ArrayList<>();
         Almacen almacen = new Almacen("AlmacenPrueba", productos);
 
@@ -40,7 +52,16 @@ public class AlmacenService implements IAlmacenService{
 
 
     @Override
-    public void deleteProducto() {
+    public int eliminarProducto(Long idProducto, Almacen almacen) {
+        Producto productoBuscado;
+        List<Producto> productos = almacen.getProductos();
 
+        for(Producto producto : productos){
+            if(producto.getId() == idProducto){
+                productos.remove(producto);
+                return 1;
+            }
+        }
+        return 0;
     }
 }

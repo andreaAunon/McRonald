@@ -16,11 +16,6 @@ public class Almacen {
     private Long id;
     private String name;
     @ManyToMany
-    @JoinTable(
-            name = "almacen_producto",
-            joinColumns = @JoinColumn(name = "almacen_id"),
-            inverseJoinColumns = @JoinColumn(name = "producto_id")
-    )
     private List<Producto> productos;
 
     public Almacen() {
