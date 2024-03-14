@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,12 +17,12 @@ public class Almacen {
     private Long id;
     private String name;
     @ManyToMany
-    private List<Producto> productos;
+    private Set<Producto> productos;
 
     public Almacen() {
     }
 
-    public Almacen(String name, List<Producto> productos) {
+    public Almacen(String name, Set<Producto> productos) {
         this.name = name;
         this.productos = productos;
     }

@@ -4,6 +4,7 @@ import com.sala3.mcronald.entities.Almacen;
 import com.sala3.mcronald.entities.Producto;
 
 import java.util.List;
+import java.util.Set;
 
 public interface IProductoService {
 
@@ -11,6 +12,6 @@ public interface IProductoService {
     public void eliminarProductoPorId(Long id);
     public void actualizarProducto(Producto producto);
     public Producto guardarProducto(Producto producto, Almacen almacen);
-    public Producto getProducto(List<Producto> productos, int idProducto);
+    public Producto getProducto(Set<Producto> productos, int idProducto);
     public List<Producto> consultarTodosLosProductos();
 }

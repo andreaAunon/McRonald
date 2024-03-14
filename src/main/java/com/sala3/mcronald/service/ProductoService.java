@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 @Service
 public class ProductoService implements IProductoService {
 
@@ -43,7 +45,7 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public Producto getProducto(List<Producto> productos, int idProducto) {
+    public Producto getProducto(Set<Producto> productos, int idProducto) {
         Producto productoBuscado;
         for(Producto producto : productos){
             if(producto.getId() == idProducto){

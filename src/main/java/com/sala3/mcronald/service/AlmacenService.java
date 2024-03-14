@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 @Service
 public class AlmacenService implements IAlmacenService{
     @Autowired
@@ -16,7 +18,7 @@ public class AlmacenService implements IAlmacenService{
 
     @Override
     public Long crearAlmacen(String nombre) {
-        List<Producto> productos = new ArrayList<>();
+        Set<Producto> productos = null;
         Almacen almacen = new Almacen(nombre, productos);
 
         almacenRepository.save(almacen);
@@ -32,7 +34,7 @@ public class AlmacenService implements IAlmacenService{
 
     @Override
     public void añadirProducto(Producto producto, Almacen almacen) {
-        List<Producto> productos = new ArrayList<>();
+        Set<Producto> productos = null;
         if(producto.getAlmacenes() != null){
             productos = almacen.getProductos();
         }
@@ -42,7 +44,7 @@ public class AlmacenService implements IAlmacenService{
     }
 
     public Long crearAlmacenSin() {
-        List<Producto> productos = new ArrayList<>();
+        Set<Producto> productos = null;
         Almacen almacen = new Almacen("AlmacenPrueba", productos);
 
         almacenRepository.save(almacen);
@@ -54,7 +56,7 @@ public class AlmacenService implements IAlmacenService{
     @Override
     public int eliminarProducto(Long idProducto, Almacen almacen) {
         Producto productoBuscado;
-        List<Producto> productos = almacen.getProductos();
+        Set<Producto> productos = almacen.getProductos();
 
         for(Producto producto : productos){
             if(producto.getId() == idProducto){

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/almacen")
@@ -38,7 +39,7 @@ public class AlmacenController {
     }
 
     @GetMapping("/productos")
-    public List<Producto> getProductos(@RequestParam Long idAlmacen){
+    public Set<Producto> getProductos(@RequestParam Long idAlmacen){
         Almacen almacen = almacenService.cogerAlmacen(idAlmacen);
         return almacen.getProductos();
     }
