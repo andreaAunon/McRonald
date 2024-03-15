@@ -1,17 +1,21 @@
 package com.sala3.mcronald.controller;
 
+import com.sala3.mcronald.dto.AlmacenDTO;
+import com.sala3.mcronald.dto.ProductoDTO;
 import com.sala3.mcronald.entities.Almacen;
 import com.sala3.mcronald.entities.Producto;
 import com.sala3.mcronald.service.AlmacenService;
 import com.sala3.mcronald.service.ProductoService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
 
-@RestController
+@Controller
 @RequestMapping("/almacen")
 public class AlmacenController {
     @Autowired
@@ -27,7 +31,11 @@ public class AlmacenController {
     public Long crearAlmacen(@RequestParam String nombre){
         return almacenService.crearAlmacen(nombre);
     }
-
+    @GetMapping("")
+    public String listarAlmacenes(Model model){
+        model.addAttribute("almacenes", almacenService.listarAlmacenes()); // Pasar la lista de almacenes a la plantilla
+        return "almacen";
+    }
     @PostMapping("/producto")
     public int añadirProducto(@RequestParam String nombre,@RequestParam String descripcion, @RequestParam Double precio,
                               @RequestParam Long idAlmacen){
@@ -39,9 +47,9 @@ public class AlmacenController {
     }
 
     @GetMapping("/productos")
-    public Set<Producto> getProductos(@RequestParam Long idAlmacen){
+    public List<ProductoDTO> getProductos(@RequestParam Long idAlmacen){
         Almacen almacen = almacenService.cogerAlmacen(idAlmacen);
-        return almacen.getProductos();
+        return almacenService.getListaProductos(almacen);
     }
     @GetMapping("/productos/{idProducto}")
     public Producto getProducto(@PathVariable int idProducto, @RequestParam Long idAlmacen){
