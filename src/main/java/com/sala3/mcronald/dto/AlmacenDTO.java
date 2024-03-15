@@ -14,12 +14,12 @@ import java.util.Set;
 public class AlmacenDTO {
 
     private Long id;
-    private String name;
+    private String nombre;
 
     public AlmacenDTO() {
     }
 
     public AlmacenDTO(Long id, String name) {
-        this.name = name;
+        this.nombre = name;
     }
 }

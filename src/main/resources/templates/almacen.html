@@ -9,7 +9,7 @@
 <h1>Lista de Almacenes</h1>
 <ul>
     <li th:each="almacen : ${almacenes}">
-        <a th:href="@{/almacen/productos(idAlmacen=${almacen.id})}" th:text="${almacen.name}">Nombre del Almacén</a>
+        <a th:href="@{/almacen/productos(idAlmacen=${almacen.id})}" th:text="${almacen.nombre}">Nombre del Almacén</a>
     </li>
 </ul>
 </body>

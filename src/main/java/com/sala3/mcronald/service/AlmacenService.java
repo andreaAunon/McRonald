@@ -40,7 +40,7 @@ public class AlmacenService implements IAlmacenService{
         List<AlmacenDTO> almacenesdto = new ArrayList();
         for(Almacen almacen : almacenRepository.findAll()){
             AlmacenDTO almacenDTO = new AlmacenDTO();
-            almacenDTO.setName(almacen.getName());
+            almacenDTO.setNombre(almacen.getName());
             almacenDTO.setId(almacen.getId());
             almacenesdto.add(almacenDTO);
         };

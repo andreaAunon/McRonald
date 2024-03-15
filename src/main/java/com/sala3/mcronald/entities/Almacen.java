@@ -14,7 +14,7 @@ import java.util.Set;
 public class Almacen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idAlmacen;
     private String name;
     @ManyToMany
     private Set<Producto> productos;
