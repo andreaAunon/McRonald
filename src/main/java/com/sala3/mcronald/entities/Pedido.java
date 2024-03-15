@@ -25,7 +25,7 @@ public class Pedido {
 
     @ManyToMany
     private List<Producto> productos;
-    //@OneToMany
+    //@ManyToOne
     //private Trabajador productos;
 
 }
