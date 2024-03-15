@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Almacenes</title>
+</head>
+<body>
+<h1>Lista de Almacenes</h1>
+<ul>
+    <li th:each="almacen : ${almacenes}">
+        <a th:href="@{/almacen/productos(idAlmacen=${almacen.id})}" th:text="${almacen.name}">Nombre del Almacén</a>
+    </li>
+</ul>
+</body>
+</html>
