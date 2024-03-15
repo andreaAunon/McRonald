@@ -33,4 +33,10 @@ public class Menu {
     )
     private List<Producto> productos;
 
+    public Menu(String nombre, double precio, String descripcion) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.productos = null;
+    }
 }

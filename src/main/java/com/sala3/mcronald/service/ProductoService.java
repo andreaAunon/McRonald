@@ -2,9 +2,10 @@ package com.sala3.mcronald.service;
 
 import com.sala3.mcronald.entities.Producto;
 import com.sala3.mcronald.repository.ProductoRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ProductoService implements IProductoService {
 
     private final ProductoRepository productRepository;
