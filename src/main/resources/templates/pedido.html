@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedidos</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">Importe</th>
+        <th scope="col">Trabajador asociado</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pedido : ${pedidosList}">
+        <td scope="row" th:text="${pedido.id}"> 348487343</td>
+        <td th:text="${pedido.importe}"> 3434</td>
+        <td th:text="${pedido.trabajadorAsociado.id}"> </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

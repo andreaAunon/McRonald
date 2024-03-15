@@ -63,7 +63,7 @@ public class AlmacenService implements IAlmacenService{
         List<ProductoDTO> productosDTO = new ArrayList<>();
         for (Producto producto : almacen.getProductos()) {
             ProductoDTO productoDTO = new ProductoDTO();
-            productoDTO.setId(producto.getId());
+            productoDTO.setId(producto.getIdProducto());
             productoDTO.setNombre(producto.getNombre());
             productoDTO.setDescripcion(producto.getDescripcion());
             productoDTO.setPrecio(producto.getPrecio());
@@ -87,7 +87,7 @@ public class AlmacenService implements IAlmacenService{
         Set<Producto> productos = almacen.getProductos();
 
         for(Producto producto : productos){
-            if(producto.getId() == idProducto){
+            if(producto.getIdProducto() == idProducto){
                 productos.remove(producto);
                 almacen.setProductos(productos);
                 almacenRepository.save(almacen);

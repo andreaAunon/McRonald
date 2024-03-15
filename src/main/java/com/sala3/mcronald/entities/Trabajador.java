@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -17,8 +17,14 @@ import java.util.List;
 public class Trabajador {
 
     @Column(name = "nombre", nullable = false)
-    private double nombre;
+    private String nombre;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idTrabajador;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Pedido> pedidos;
+
+    public Trabajador(String nombre){
+        this.nombre = nombre;
+    }
 }

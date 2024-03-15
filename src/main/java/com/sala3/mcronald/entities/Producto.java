@@ -20,9 +20,11 @@ public class Producto {
     private double precio;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @ManyToMany(mappedBy = "productos")
+    private Long idProducto;
+    @ManyToMany
     private List<Almacen> almacenes;
+    @ManyToMany
+    private List<Pedido> pedidos;
 
     public Producto() {
     }

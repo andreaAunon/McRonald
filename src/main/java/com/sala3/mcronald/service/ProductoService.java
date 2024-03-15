@@ -48,7 +48,7 @@ public class ProductoService implements IProductoService {
     public Producto getProducto(Set<Producto> productos, int idProducto) {
         Producto productoBuscado;
         for(Producto producto : productos){
-            if(producto.getId() == idProducto){
+            if(producto.getIdProducto() == idProducto){
                 productoBuscado = producto;
                 return productoBuscado;
             }

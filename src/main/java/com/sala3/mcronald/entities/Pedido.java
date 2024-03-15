@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 
 import java.util.List;
 
@@ -21,11 +24,18 @@ public class Pedido {
     private double importe;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idPedido;
 
     @ManyToMany
     private List<Producto> productos;
-    //@ManyToOne
-    //private Trabajador productos;
+    @ManyToOne
+    @JoinColumn(name="idTrabajador")
+    @Cascade(CascadeType.SAVE_UPDATE)
+    private Trabajador trabajador;
+
+    public Pedido(double importe, Trabajador trabajador){
+        this.importe = importe;
+        this.trabajador = trabajador;
+    }
 
 }
