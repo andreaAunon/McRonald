@@ -16,21 +16,31 @@ public class PedidoController {
     private IPedidoService pedidoService;
 
     @PostConstruct
-    @PostMapping("/pedido/init")
+    @PostMapping("/init")
     public String crearPedidosBase(){
         pedidoService.init();
         return "Ok";
     }
 
-    @GetMapping("/list")
+    @GetMapping("/listar")
     @ResponseBody
     public void getPedidos(Model model){
-        model.addAttribute("pedidosList", pedidoService.getPedidos());
+        model.addAttribute("pedidos", pedidoService.getPedidos());
+    }
+
+    @GetMapping("/add")
+    @ResponseBody
+    public void addPedido(Model model){
+        PedidoDTO pedido = new PedidoDTO();
+        pedidoService.addPedido(pedido);
+        model.addAttribute("pedidos", pedidoService.getPedidos());
     }
 
 
-    @PutMapping(value = "/pedidos/{idPedido}")
-    public String updatePedido(@PathVariable Long idPedido, @RequestBody PedidoDTO pedidoDTO) {
+    @PutMapping(value = "/actualizar")
+    @ResponseBody
+    public void updatePedido(@PathVariable Long idPedido, @RequestBody PedidoDTO pedidoDTO,
+                             Model model) {
         PedidoDTO pedidoAActualizar = pedidoService.getPedidoById(idPedido);
 
         if(pedidoAActualizar != null){
@@ -39,13 +49,14 @@ public class PedidoController {
             pedidoService.addPedido(pedidoDTO);
         }
 
-        return "redirect:/pedidos/list";
+        model.addAttribute("pedidos", pedidoService.getPedidos());
     }
 
-    @DeleteMapping(value = "/pedidos/{idPedido}")
-    public String deletePedido(@PathVariable Long idProducto) {
+    @DeleteMapping(value = "/borrar/{idPedido}")
+    @ResponseBody
+    public void deletePedido(@PathVariable Long idProducto, Model model) {
         pedidoService.deletePedido(idProducto);
-        return "redirect:/pedidos/list";
+        model.addAttribute("pedidos", pedidoService.getPedidos());
     }
 
 }

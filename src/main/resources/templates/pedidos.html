@@ -14,10 +14,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="pedido : ${pedidosList}">
-        <td scope="row" th:text="${pedido.id}"> 348487343</td>
-        <td th:text="${pedido.importe}"> 3434</td>
-        <td th:text="${pedido.trabajadorAsociado.id}"> </td>
+    <tr th:each="pedido : ${pedidos}">
+        <td scope="row" th:text="${pedidos.id}"> 348487343</td>
+        <td th:text="${pedidos.importe}"> 3434</td>
+        <td th:text="${pedidos.trabajadorAsociado.id}"> </td>
     </tr>
     </tbody>
 </table>
